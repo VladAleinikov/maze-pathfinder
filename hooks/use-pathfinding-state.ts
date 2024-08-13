@@ -16,11 +16,12 @@ interface PathfindingStateStore {
 
 export const usePathfindingState = create<PathfindingStateStore>((set) => ({
   algorithm: AlgorithmType.WALL_FOLLOWER,
-  setAlgorithm: (algorithm: AlgorithmType) => set({algorithm}),
+  setAlgorithm: (algorithm: AlgorithmType) => set({ algorithm }),
   maze: MazeType.NONE,
-  setMaze: (maze: MazeType) => set({maze}),
+  setMaze: (maze: MazeType) => set({ maze }),
   grid: createGrid(START_TILE, END_TILE),
-  setGrid: (grid: GridType) => set({grid}),
+  setGrid: (grid: GridType) => set({ grid }),
   isGraphVisualized: false,
-  setIsGraphVisualized: (isGraphVisualized: boolean) => set({isGraphVisualized}),
-}))
+  setIsGraphVisualized: (isGraphVisualized: boolean) =>
+    set({ isGraphVisualized }),
+}));
