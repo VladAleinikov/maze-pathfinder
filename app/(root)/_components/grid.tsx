@@ -1,12 +1,46 @@
-"use client";
-
 import { usePathfindingState } from "@/hooks/use-pathfinding-state";
 import { MAX_ROWS } from "@/lib/constants";
-import { cn } from "@/lib/utils";
+import { checkIfStartOrEnd, cn, createNewGrid } from "@/lib/utils";
 import { Tile } from "./tile";
+import { MutableRefObject, useState } from "react";
 
-export const Grid = () => {
-  const grid = usePathfindingState((state) => state.grid);
+interface GridProps {
+  isVisualizationRunningRef: MutableRefObject<boolean>;
+}
+
+export const Grid = ({ isVisualizationRunningRef }: GridProps) => {
+  const { grid, setGrid } = usePathfindingState();
+  const [isMouseDown, setIsMouseDown] = useState(false);
+
+  const handleMouseDown = (row: number, col: number) => {
+    if (isVisualizationRunningRef.current || checkIfStartOrEnd(row, col)) {
+      return;
+    }
+
+    setIsMouseDown(true);
+
+    const newGrid = createNewGrid(grid, row, col);
+    setGrid(newGrid);
+  };
+
+  const handleMouseUp = (row: number, col: number) => {
+    if (isVisualizationRunningRef.current || checkIfStartOrEnd(row, col)) {
+      return;
+    }
+
+    setIsMouseDown(false);
+  };
+
+  const handleMouseEnter = (row: number, col: number) => {
+    if (isVisualizationRunningRef.current || checkIfStartOrEnd(row, col)) {
+      return;
+    }
+
+    if (isMouseDown) {
+      const newGrid = createNewGrid(grid, row, col);
+      setGrid(newGrid);
+    }
+  };
 
   return (
     <div
@@ -23,7 +57,13 @@ export const Grid = () => {
       {grid.map((row, id) => (
         <div key={id} className="flex">
           {row.map((tile, tileId) => (
-            <Tile {...tile} key={tileId} />
+            <Tile
+              key={tileId}
+              {...tile}
+              handleMouseDown={()=>handleMouseDown(tile.row, tile.col)}
+              handleMouseEnter={()=>handleMouseEnter(tile.row, tile.col)}
+              handleMouseUp={()=>handleMouseUp(tile.row, tile.col)}
+            />
           ))}
         </div>
       ))}

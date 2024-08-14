@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { MAX_COLS, MAX_ROWS } from "./constants";
+import { END_TILE, MAX_COLS, MAX_ROWS, START_TILE } from "./constants";
 import { GridType, TileStates, TileType } from "./types";
 import { type ClassValue, clsx } from "clsx";
 
@@ -14,8 +14,7 @@ const createRow = (row: number, startTile: TileType, endTile: TileType) => {
     let tileState: TileStates = TileStates.IS_DEFAULT;
     if (row === endTile.row && col === endTile.col) {
       tileState = TileStates.IS_END;
-    }
-    else if (row === startTile.row && col === startTile.col) {
+    } else if (row === startTile.row && col === startTile.col) {
       tileState = TileStates.IS_START;
     }
     currentRow.push({
@@ -39,3 +38,21 @@ export const createGrid = (startTile: TileType, endTile: TileType) => {
 
   return grid;
 };
+
+export const checkIfStartOrEnd = (row: number, col: number) => {
+  return (
+    (row === START_TILE.row && col === START_TILE.col) ||
+    (row === END_TILE.row && col === END_TILE.col)
+  );
+};
+
+export const createNewGrid = (grid: GridType, row: number, col: number) => {
+  const newGrid = grid.slice();
+  const newTile = {
+    ...newGrid[row][col],
+    state: TileStates.IS_WALL
+  };
+  newGrid[row][col] = newTile;
+
+  return newGrid;
+}
