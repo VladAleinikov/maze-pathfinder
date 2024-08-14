@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import { Grid } from "./_components/grid";
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
-  )
-}
+    <div className="h-screen w-screen flex flex-col">
+      <Grid />
+    </div>
+  );
+};
 
-export default HomePage
+export default HomePage;
