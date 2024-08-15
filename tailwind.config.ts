@@ -25,6 +25,16 @@ const config: Config = {
         "tile-md": "15px",
         "tile-xs": "8px",
       },
+      keyframes: {
+        wall: {
+          "0%": {
+            transform: "scale(0.7)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
+      },
     },
   },
   plugins: [],

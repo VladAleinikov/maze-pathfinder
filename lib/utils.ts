@@ -50,9 +50,27 @@ export const createNewGrid = (grid: GridType, row: number, col: number) => {
   const newGrid = grid.slice();
   const newTile = {
     ...newGrid[row][col],
-    state: TileStates.IS_WALL
+    state: TileStates.IS_WALL,
   };
   newGrid[row][col] = newTile;
 
   return newGrid;
+};
+
+export const isEqualTiles = (a: TileType, b: TileType) => {
+  return a.row === b.row && a.col === b.col;
+};
+
+export const isEqualRowCol = (tile: TileType, row: number, col: number) => {
+  return tile.row === row && tile.col === col;
+};
+
+export const sleep = (ms: number) => {
+  return new Promise((res) => setTimeout(res, ms));
+};
+
+export const getRndNum = (min: number, max: number) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
 }

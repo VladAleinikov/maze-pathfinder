@@ -45,7 +45,7 @@ export const Grid = ({ isVisualizationRunningRef }: GridProps) => {
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center border-sky-300 ",
+        "flex flex-col items-center justify-center mt-4 border-sky-300 ",
         `lg:min-h-[${MAX_ROWS * 17}px] md:min-h-[${
           MAX_ROWS * 15
         }px] xs:min-h-[${MAX_ROWS * 8}px] min-h-[${MAX_ROWS * 7}px]`,

@@ -3,6 +3,7 @@ export enum AlgorithmType {
 }
 export enum MazeType {
   NONE = "NONE",
+  BINARY_TREE = "BINARY_TREE",
 }
 
 export enum TileStates {
@@ -21,5 +22,7 @@ export type TileType = {
   parent: TileType | null;
   state:  TileStates;
 };
+
+export type SpeedType = 2 | 1 | 0.5;
 
 export type GridType = TileType[][];

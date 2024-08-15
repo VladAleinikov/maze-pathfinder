@@ -9,7 +9,7 @@ interface TileStateStore {
   setEndTile: (endTile: TileType) => void;
 }
 
-export const useTiltState = create<TileStateStore>((set) => ({
+export const useTileState = create<TileStateStore>((set) => ({
   startTile: START_TILE,
   setStartTile: (startTile: TileType) => set({ startTile }),
   endTile: END_TILE,
