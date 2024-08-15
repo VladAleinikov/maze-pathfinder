@@ -17,13 +17,17 @@ export const destroyWall = async (
   grid: GridType,
   row: number,
   col: number,
-  isRight: number,
+  dir: "top" | "right" | "bottom" | "left" | string,
   speed: SpeedType
 ) => {
-  if (isRight && grid[row][col + 1]) {
+  if (dir === "right" && grid[row][col + 1]) {
     animateWall(grid, row, col + 1, speed);
-  } else if (grid[row + 1]) {
+  } else if (dir === "bottom" && grid[row + 1]) {
     animateWall(grid, row + 1, col, speed);
+  } else if (dir === "top" && grid[row - 1]) {
+    animateWall(grid, row - 1, col, speed);
+  } else if (dir === "left" && grid[row][col - 1]) {
+    animateWall(grid, row, col - 1, speed);
   } else {
     animateWall(grid, row, col, speed);
   }

@@ -29,6 +29,10 @@ export const MAZES: { value: MazeType; name: string }[] = [
   {
     value: MazeType.BINARY_TREE,
     name: "Бинарное дерево"
+  },
+  {
+    value: MazeType.SIDEWINDER,
+    name: "Sidewinder"
   }
 ];
 

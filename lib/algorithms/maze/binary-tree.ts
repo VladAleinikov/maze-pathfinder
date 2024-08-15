@@ -29,11 +29,11 @@ export const binaryTree = async (
       if (isEqualRowCol(endTile, row, col)) {
         continue;
       } else if (row === MAX_ROWS - 2) {
-        await destroyWall(grid, row, col, 1, speed);
+        await destroyWall(grid, row, col, "right", speed);
       } else if (col === MAX_COLS - 2) {
-        await destroyWall(grid, row, col, 0, speed);
+        await destroyWall(grid, row, col, "bottom", speed);
       } else {
-        await destroyWall(grid, row, col, getRndNum(0, 2), speed);
+        await destroyWall(grid, row, col, ["bottom", "right"][getRndNum(0, 2)], speed);
      }
     }
   }
