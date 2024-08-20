@@ -4,7 +4,7 @@ import { destroyWall } from "@/lib/destroy-wall";
 import { GridType, SpeedType, TileStates, TileType } from "@/lib/types";
 import { getRndNum, isEqualRowCol, isEqualTiles, sleep } from "@/lib/utils";
 
-export const Sidewinder = async (
+export const sidewinder = async (
   grid: GridType,
   startTile: TileType,
   endTile: TileType,

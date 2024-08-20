@@ -4,7 +4,8 @@ export enum AlgorithmType {
 export enum MazeType {
   NONE = "NONE",
   BINARY_TREE = "BINARY_TREE",
-  SIDEWINDER = "SIDEWINDER"
+  SIDEWINDER = "SIDEWINDER",
+  ELLERS_ALGORITHM = "ELLERS_ALGORITHM",
 }
 
 export enum TileStates {

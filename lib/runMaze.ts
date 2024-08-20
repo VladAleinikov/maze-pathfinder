@@ -1,5 +1,6 @@
 import { binaryTree } from "./algorithms/maze/binary-tree";
-import { Sidewinder } from "./algorithms/maze/sidewinder";
+import { ellersAlgorithm } from "./algorithms/maze/ellers-algorithm";
+import { sidewinder } from "./algorithms/maze/sidewinder";
 import { MazeType, SpeedType, TileType } from "./types";
 import { GridType } from '@/lib/types';
 
@@ -15,7 +16,9 @@ export const runMaze = async (
       await binaryTree(grid, startTile, endTile, speed);
       break;
     case MazeType.SIDEWINDER:
-      await Sidewinder(grid, startTile, endTile, speed);
+      await sidewinder(grid, startTile, endTile, speed);
+    case MazeType.ELLERS_ALGORITHM:
+      await ellersAlgorithm(grid, startTile, endTile, speed);
     default:
       break;
   }

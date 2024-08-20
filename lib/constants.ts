@@ -33,6 +33,10 @@ export const MAZES: { value: MazeType; name: string }[] = [
   {
     value: MazeType.SIDEWINDER,
     name: "Sidewinder"
+  },
+  {
+    value: MazeType.ELLERS_ALGORITHM,
+    name: "Алгоритм Эллера"
   }
 ];
 
