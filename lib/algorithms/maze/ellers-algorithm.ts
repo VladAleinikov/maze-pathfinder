@@ -2,7 +2,7 @@ import { MAX_COLS, MAX_ROWS } from "@/lib/constants";
 import { createWall } from "@/lib/create-wall";
 import { destroyWall } from "@/lib/destroy-wall";
 import { GridType, SpeedType, TileStates, TileType } from "@/lib/types";
-import { getRndNum, isEqualRowCol, isEqualTiles, sleep } from "@/lib/utils";
+import { isEqualTiles, sleep } from "@/lib/utils";
 
 function* generateNum() {
   for (let num = 1; num < MAX_COLS * MAX_ROWS; num++) {

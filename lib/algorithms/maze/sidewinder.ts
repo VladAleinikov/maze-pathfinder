@@ -10,6 +10,9 @@ export const sidewinder = async (
   endTile: TileType,
   speed: SpeedType
 ) => {
+  console.log('====================================');
+  console.log();
+  console.log('====================================');
   createWall(startTile, endTile, speed);
   await sleep(MAX_ROWS * MAX_COLS);
 
