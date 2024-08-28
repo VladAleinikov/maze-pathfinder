@@ -29,3 +29,5 @@ export type TileType = {
 export type SpeedType = 2 | 1 | 0.5;
 
 export type GridType = TileType[][];
+
+export type DirectionType = "top" | "left" | "right" | "bottom"

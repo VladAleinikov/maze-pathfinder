@@ -1,4 +1,4 @@
-import { MazeType, SpeedType, TileStates, TileType } from "./types";
+import { AlgorithmType, MazeType, SpeedType, TileStates, TileType } from "./types";
 
 export const MAX_ROWS = 41;
 export const MAX_COLS = 41;
@@ -44,6 +44,13 @@ export const MAZES: { value: MazeType; name: string }[] = [
   }
 ];
 
+export const PATHFINDING_ALGORITHMS: { value: AlgorithmType, name: string }[] = [
+  {
+    value: AlgorithmType.WALL_FOLLOWER,
+    name:"Вдоль стен"
+  }
+]
+
 export const START_TILE: TileType = {
   row: 1,
   col: 1,
@@ -65,3 +72,6 @@ export const SPEEDS: { name: string, value: SpeedType }[] = [
   { name: "Средний", value: 1 },
   { name: "Быстрый", value: 0.5 },
 ]
+
+export const SLEEP_TIME = 8;
+export const EXTENDED_SLEEP_TIME = 30;

@@ -1,12 +1,9 @@
 import { MAX_COLS, MAX_ROWS } from "@/lib/constants";
 import { createWall } from "@/lib/create-wall";
 import { destroyWall } from "@/lib/destroy-wall";
+import { isTileInTiles } from "@/lib/is-tile-in-tiles";
 import { GridType, SpeedType, TileStates, TileType } from "@/lib/types";
 import { getRndNum, isEqualTiles, sleep } from "@/lib/utils";
-
-const isTileInTree = (tree: TileType[], tile: TileType) => {
-  return tree.find((treeTile) => isEqualTiles(treeTile, tile)) !== undefined;
-};
 
 const getRndTile = (grid: GridType, mainTree: TileType[]): TileType => {
   const notMainTreeTiles = [];
@@ -14,7 +11,7 @@ const getRndTile = (grid: GridType, mainTree: TileType[]): TileType => {
   for (const row of grid) {
     for (const tile of row) {
       if (tile.row % 2 ===1 && tile.col % 2 === 1) {
-        if (!isTileInTree(mainTree, tile)) {
+        if (!isTileInTiles(mainTree, tile)) {
           notMainTreeTiles.push(tile);
         }
       }
@@ -111,7 +108,7 @@ export const williamsAlgorithm = async (
   while (mainTree.length !== ((MAX_COLS - 1) / 2) * ((MAX_ROWS - 1) / 2)) {
     const newTree: TileType[] = [getRndTile(grid, mainTree)];
 
-    while (!isTileInTree(mainTree, newTree[newTree.length - 1])) {
+    while (!isTileInTiles(mainTree, newTree[newTree.length - 1])) {
       const rndDir = ["top", "right", "bottom", "left"][getRndNum(0, 4)];
       const newTile = getTileByDirectioin(
         grid,
@@ -119,7 +116,7 @@ export const williamsAlgorithm = async (
         rndDir
       );
       
-      if (isTileInTree(newTree, newTile)) {
+      if (isTileInTiles(newTree, newTile)) {
         newTree.splice(
           newTree.findIndex((tile) => isEqualTiles(tile, newTile))
         );
