@@ -48,6 +48,10 @@ export const PATHFINDING_ALGORITHMS: { value: AlgorithmType, name: string }[] = 
   {
     value: AlgorithmType.WALL_FOLLOWER,
     name:"Вдоль стен"
+  },
+  {
+    value: AlgorithmType.SHORTEST_PATH_FINDER,
+    name:"Поиск кратчайшего пути"
   }
 ]
 

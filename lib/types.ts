@@ -1,5 +1,6 @@
 export enum AlgorithmType {
   WALL_FOLLOWER = "WALL_FOLLOWER",
+  SHORTEST_PATH_FINDER = "SHORTEST_PATH_FINDER",
 }
 export enum MazeType {
   NONE = "NONE",
